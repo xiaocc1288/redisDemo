@@ -57,5 +57,23 @@ Examples:<br/>
 When no command is given, redis-cli starts in interactive mode.<br/>
 Type "help" in interactive mode for information on available commands.<br/>
 
+在打开的客户端进行简单的测试：
+
+info  
+>查看系统信息
+
+set hello "world"  
+>存入一个 key 和 value均为 String 的记录
+ 
+get hello 
+> 获取一个key为 ‘hello’ 的string 记录
+
+##redis常用配置
+** 提示：redis的默认配置文件位于 **/redis/conf/redis.conf  如需修改前，请先备份当前配置文件
+
++ 配置redis是否以守护进程的模式启动
++ 配置redis server监听的端口
++ 配置redis 监听的地址 （如果不指定，监听当前机器的所有网卡上的连接请求（对于多网卡机器））
+
 
 
