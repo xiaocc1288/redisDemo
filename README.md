@@ -9,7 +9,7 @@ Redis 是完全开源免费的，遵守BSD协议，先进的key - value持久化
 ####下载wget  http://download.redis.io/releases/redis-2.8.13.tar.gz
 假设当前下载到  /home/michael/soft 路径
 ####解压：tar -xvzf redis-2.8.13.tar.gz
-####编译：  cd redis-2.8.13  make
+####编译：  cd redis-2.8.13  <br/>make
 ####创建启动链接
 sudo ln -s /home/michael/soft/redis-2.8.13/src/redis-server                      &nbsp;&nbsp;     /usr/bin/redis-server
 sudo ln -s /home/michael/soft/redis-2.8.13/src/redis-cli&nbsp;&nbsp;/usr/bin/redis-cli
