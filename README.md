@@ -69,7 +69,8 @@ get hello
 > 获取一个key为 ‘hello’ 的string 记录
 
 ##redis常用配置
-** 提示：redis的默认配置文件位于 **/redis/conf/redis.conf  如需修改前，请先备份当前配置文件。说明，如redis.conf.demo 所示
+** 提示：redis的默认配置文件位于 **/redis/conf/redis.conf  如需修改前，请先备份当前配置文件
+说明，如redis.conf.demo 所示
 
 ##常用的数据类型以及命令
 ### String
@@ -125,7 +126,28 @@ RPOPLPUSH source destination删除列表中的最后一个元素，将其追加�
 使用场景：
 可以用作队列，存取指定大小的内容。比如：网站主页的最新若干条的榜单，保存指定条数的日志等。
 ### Set
+无序，不可重复，
+最大长度：2的32次方-1个元素
+常用的命令：
+http://www.redis.cn/commands.html#set
+SADD key member [member ...]添加一个或者多个元素到集合(set)里
+SCARD key获取集合里面的元素数量
+SDIFF key [key ...]获得队列不存在的元素
+SDIFFSTORE destination key [key ...]获得队列不存在的元素，并存储在一个关键的结果集
+SINTER key [key ...]获得两个集合的交集
+SINTERSTORE destination key [key ...]获得两个集合的交集，并存储在一个关键的结果集
+SISMEMBER key member确定一个给定的值是一个集合的成员
+SMEMBERS key获取集合里面的所有key
+SMOVE source destination member移动集合里面的一个key到另一个集合
+SPOP key删除并获取一个集合里面的元素
+SRANDMEMBER key [count]从集合里面随机获取一个key
+SREM key member [member ...]从集合里删除一个或多个key
+SSCAN key cursor [MATCH pattern] [COUNT count]迭代set里面的元素
+SUNION key [key ...]添加多个set元素
+SUNIONSTORE destination key [key ...]合并set元素，并将结果存入新的set里面
 
+类似于数学中的
+交集（SINTER，SINTERSTORE），并集(SUNION,SUNIONSTORE)，差集(SDIFF,SDIFFSTORE)  查找某个元素是否存在于 集合中
 ### Hashes
 ### SortSet
 
