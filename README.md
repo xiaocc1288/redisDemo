@@ -69,11 +69,65 @@ get hello
 > 获取一个key为 ‘hello’ 的string 记录
 
 ##redis常用配置
-** 提示：redis的默认配置文件位于 **/redis/conf/redis.conf  如需修改前，请先备份当前配置文件
+** 提示：redis的默认配置文件位于 **/redis/conf/redis.conf  如需修改前，请先备份当前配置文件。说明，如redis.conf.demo 所示
 
-+ 配置redis是否以守护进程的模式启动
-+ 配置redis server监听的端口
-+ 配置redis 监听的地址 （如果不指定，监听当前机器的所有网卡上的连接请求（对于多网卡机器））
+##常用的数据类型以及命令
+### String
+最简单也是最常用的一种存贮数据类型。其他类型的数据结构都是基于string类型发展而来的。
+要点：字符串必须二进制安全，
+常用命令：
+http://www.redis.cn/commands.html#string
+BITCOUNT key [start] [end]统计字符串指定起始位置的字节数
+BITOP operation destkey key [key ...]Perform bitwise operations between strings
+DECR key整数原子减1
+DECRBY key decrement原子减指定的整数
+GET key获取key的值
+GETBIT key offset返回位的值存储在关键的字符串值的偏移量。
+GETRANGE key start end获取存储在key上的值的一个子字符串
+GETSET key value设置一个key的value，并获取设置前的值
+INCR key执行原子加1操作
+INCRBY key increment执行原子增加一个整数
+INCRBYFLOAT key increment执行原子增加一个浮点数
+MGET key [key ...]获得所有key的值
+MSET key value [key value ...]设置多个key value
+MSETNX key value [key value ...]设置多个key value,仅当key存在时
+PSETEX key milliseconds valueSet the value and expiration in milliseconds of a key
+SET key value设置一个key的value值
+SETBIT key offset valueSets or clears the bit at offset in the string value stored at key
+SETEX key seconds value设置key-value并设置过期时间（单位：秒）
+SETNX key value设置的一个关键的价值，只有当该键不存在
+SETRANGE key offset valueOverwrite part of a string at key starting at the specified offset
+STRLEN key获取指定key值的长度
+使用场景：
+计数器应用
+Redis的命令都是原子性的，你可以轻松地利用INCR，DECR命令来构建计数器系统。
+
+### List
+要点：
+有序，其顺序为插入到到list的顺序，一个list的最大长度一个列表最多可以包含2的32次方-1个元素（4294967295，每个表超过40亿个元素）。
+常用的命令：
+http://www.redis.cn/commands.html#list
+BLPOP key [key ...] timeout删除，并获得该列表中的第一元素，或阻塞，直到有一个可用
+BRPOP key [key ...] timeout删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用
+BRPOPLPUSH source destination timeout弹出一个列表的值，将它推到另一个列表，并返回它;或阻塞，直到有一个可用
+LINDEX key index获取一个元素，通过其索引列表
+LINSERT key BEFORE|AFTER pivot value在列表中的另一个元素之前或之后插入一个元素
+LLEN key获得队列(List)的长度
+LPOP key从队列的左边出队一个元素
+LPUSH key value [value ...]从队列的左边入队一个或多个元素
+LPUSHX key value当队列存在时，从队到左边入队一个元素
+LRANGE key start stop从列表中获取指定返回的元素
+LREM key count value从列表中删除元素
+LSET key index value设置队列里面一个元素的值
+LTRIM key start stop修剪到指定范围内的清单
+RPOP key从队列的右边出队一个元素
+RPOPLPUSH source destination删除列表中的最后一个元素，将其追加到另一个列表
+使用场景：
+可以用作队列，存取指定大小的内容。比如：网站主页的最新若干条的榜单，保存指定条数的日志等。
+### Set
+
+### Hashes
+### SortSet
 
 
 
