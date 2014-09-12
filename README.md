@@ -173,5 +173,46 @@ HVALS key获得hash的所有值<br/>
 
 ### SortSet
 redis的高级功能。set，但是可以排序。sortSet中的排序依据首先根据每个元素对应的权值。如果权值相等，则以元素按照词典序进行排列。
+相关命令：
+ZADD key score member [score member ...]添加到有序set的一个或多个成员，或更新的分数，如果它已经存在<br/>
+ZCARD key获取一个排序的集合中的成员数量<br/>
+ZCOUNT key min max给定值范围内的成员数与分数排序<br/>
+ZINCRBY key increment member增量的一名成员在排序设置的评分<br/>
+ZINTERSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE<br/> SUM|MIN|MAX]相交多个排序集，导致排序的设置存储在一个新的关键<br/>
+ZRANGE key start stop [WITHSCORES]返回的成员在排序设置的范围，由指数<br/><br/>
+ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]返回的成员在排序设置的范围，由得分<br/>
+ZRANK key member确定在排序集合成员的索引<br/>
+ZREM key member [member ...]从排序的集合中删除一个或多个成员<br/>
+ZREMRANGEBYRANK key start stop在排序设置的所有成员在给定的索引中删除<br/>
+ZREMRANGEBYSCORE key min max删除一个排序的设置在给定的分数所有成员<br/>
+ZREVRANGE key start stop [WITHSCORES]在排序的设置返回的成员范围，通过索引，下令从分数高到低<br/>
+ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]返回的成员在排序设置的范围，由得分，下令从分数高到低<br/>
+ZREVRANK key member确定指数在排序集的成员，下令从分数高到低<br/>
+ZSCAN key cursor [MATCH pattern] [COUNT count]迭代sorted sets里面的元素<br/>
+ZSCORE key member获取成员在排序设置相关的比分<br/>
+ZUNIONSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE<br/> SUM|MIN|MAX]添加多个排序集和导致排序的设置存储在一个新的关键<br/>
+使用场景：
+排行榜，带优先级的消息队列
+
+
+
+## 其他功能
+### 事务
+支持多个操作的事务，提交回滚
+
+### 订阅，发布
+每个客户端可以订阅1个或者多个频道， 或者订阅模式  （类似于模糊匹配的模式）
+但是当一个客户端在处于订阅模式时，无法进行其他操作
+
+### 主从复制
+可以使用多个服务器实现读写分离。使用单个主节点接收写入，使用若干个从节点接受读取操作请求。配置文件。
+
+### 认证
+
+## 持久化方式
+### BDR
+### AOF
+
+
 
 
